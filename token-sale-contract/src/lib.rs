@@ -24,11 +24,11 @@ const OUTLAYER_CONTRACT_ID: &str = "outlayer.testnet";
 trait OutLayer {
     fn request_execution(
         &mut self,
-        code_source: near_sdk::serde_json::Value,
-        resource_limits: near_sdk::serde_json::Value,
-        input_data: String,
+        source: near_sdk::serde_json::Value,
+        resource_limits: Option<near_sdk::serde_json::Value>,
+        input_data: Option<String>,
         secrets_ref: Option<near_sdk::serde_json::Value>,
-        response_format: String,
+        response_format: Option<String>,
         payer_account_id: Option<AccountId>,
     );
 }
@@ -137,10 +137,12 @@ impl TokenSaleContract {
         );
 
         // Hardcoded parameters for captcha-ark
-        let code_source = near_sdk::serde_json::json!({
-            "repo": "https://github.com/zavodil/captcha-ark",
-            "commit": "main",
-            "build_target": "wasm32-wasip2"
+        let source = near_sdk::serde_json::json!({
+            "GitHub": {
+                "repo": "https://github.com/zavodil/captcha-ark",
+                "commit": "main",
+                "build_target": "wasm32-wasip2"
+            }
         });
 
         let resource_limits = near_sdk::serde_json::json!({
@@ -162,11 +164,11 @@ impl TokenSaleContract {
             .with_attached_deposit(total_attached)
             .with_unused_gas_weight(1) // All unused gas goes to request_execution
             .request_execution(
-                code_source,
-                resource_limits,
-                input_data.to_string(),
+                source,
+                Some(resource_limits),
+                Some(input_data.to_string()),
                 None,
-                "Json".to_string(),
+                Some("Json".to_string()),
                 Some(buyer.clone()), // Refund to buyer, not this contract
             )
             .then(
