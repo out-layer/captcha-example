@@ -552,14 +552,14 @@ cargo build --target wasm32-wasip2 --release
 
 ## 📚 Learn More
 
-- [WASI Tutorial](../WASI_TUTORIAL.md)
-- [OutLayer Documentation](../../README.md)
-- [Random Number Example](../random-ark/)
+- [WASI Tutorial](https://github.com/fastnear/near-outlayer/blob/main/wasi-examples/WASI_TUTORIAL.md)
+- [OutLayer Documentation](https://github.com/fastnear/near-outlayer)
+- [Random Number Example](https://github.com/out-layer/random-example)
 - [NEAR Smart Contracts](https://docs.near.org/develop/contracts/introduction)
 
 ## 📄 License
 
-MIT
+MIT OR Apache-2.0, at your option — see `LICENSE-MIT` and `LICENSE-APACHE`.
 
 ## 🤝 Contributing
 
