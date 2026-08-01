@@ -136,10 +136,10 @@ impl TokenSaleContract {
             session_id
         );
 
-        // Hardcoded parameters for captcha-ark
+        // Hardcoded parameters for captcha-example
         let source = near_sdk::serde_json::json!({
             "GitHub": {
-                "repo": "https://github.com/zavodil/captcha-ark",
+                "repo": "https://github.com/out-layer/captcha-example",
                 "commit": "main",
                 "build_target": "wasm32-wasip2"
             }

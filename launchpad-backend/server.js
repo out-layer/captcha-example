@@ -54,7 +54,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'captcha-ark-secret-key-change-in-production',
+    secret: process.env.SESSION_SECRET || 'captcha-example-secret-key-change-in-production',
     resave: false,
     saveUninitialized: true,
     cookie: {

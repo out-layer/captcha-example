@@ -22,7 +22,7 @@
        │ 10. OutLayer coordinator picks up task
        ↓
 ┌────────────────────┐
-│  Worker (WASM)     │ 11. Executes captcha-ark.wasm (wasm32-wasip2) with input:
+│  Worker (WASM)     │ 11. Executes captcha-example.wasm (wasm32-wasip2) with input:
 │  Off-chain executor│     {session_id, buyer, amount, launchpad_url}
 └──────┬─────────────┘
        │

@@ -1,4 +1,6 @@
-# captcha-ark - Token Sale with CAPTCHA Verification
+# captcha-example - Token Sale with CAPTCHA Verification
+
+> **[Full documentation](https://outlayer.fastnear.com/docs/examples#captcha-ark)** on the OutLayer dashboard.
 
 A complete example demonstrating how to use NEAR OutLayer for CAPTCHA verification in token sales, preventing bot purchases while maintaining decentralized execution.
 
@@ -27,7 +29,7 @@ User Browser → Token Sale Contract → OutLayer → CAPTCHA Worker
 1. **User** visits launchpad website, gets `session_id`
 2. **User** calls `buy_tokens(session_id)` on smart contract with NEAR
 3. **Contract** calls OutLayer with session_id
-4. **OutLayer Worker** (captcha-ark):
+4. **OutLayer Worker** (captcha-example):
    - Makes HTTP POST to launchpad `/api/captcha/challenge`
    - Launchpad sends CAPTCHA to user's browser via WebSocket
    - Worker polls `/api/captcha/verify/{id}` every 500ms
@@ -38,7 +40,7 @@ User Browser → Token Sale Contract → OutLayer → CAPTCHA Worker
 
 ## 📦 Components
 
-### 1. WASI Worker (`captcha-ark`)
+### 1. WASI Worker (`captcha-example`)
 
 WASM module that verifies CAPTCHA by communicating with launchpad API.
 
@@ -148,7 +150,7 @@ See [CONFIGURATION.md](CONFIGURATION.md) for detailed setup instructions.
 ### 1. Build WASI Worker
 
 ```bash
-cd captcha-ark
+cd captcha-example
 
 # Add WASM target
 rustup target add wasm32-wasip2
@@ -156,7 +158,7 @@ rustup target add wasm32-wasip2
 # Build
 cargo build --target wasm32-wasip2 --release
 
-# Output: target/wasm32-wasip2/release/captcha-ark.wasm (~459KB)
+# Output: target/wasm32-wasip2/release/captcha-example.wasm (~459KB)
 
 # Push to GitHub (worker will be compiled by OutLayer)
 git push origin main
@@ -302,7 +304,7 @@ Deposit: 1.1 NEAR
 
 ↓
 
-OutLayer Worker (captcha-ark):
+OutLayer Worker (captcha-example):
   1. POST /api/captcha/challenge
      {session_id: "abc123", buyer: "alice.testnet", amount: "1000..."}
   2. Poll GET /api/captcha/verify/challenge_xyz
