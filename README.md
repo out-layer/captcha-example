@@ -1,6 +1,6 @@
 # captcha-example - Token Sale with CAPTCHA Verification
 
-> **[Full documentation](https://outlayer.fastnear.com/docs/examples#captcha-ark)** on the OutLayer dashboard.
+> **[Full documentation](https://app.outlayer.ai/docs/examples#captcha-ark)** on the OutLayer dashboard.
 
 A complete example demonstrating how to use NEAR OutLayer for CAPTCHA verification in token sales, preventing bot purchases while maintaining decentralized execution.
 
