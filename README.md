@@ -552,8 +552,8 @@ cargo build --target wasm32-wasip2 --release
 
 ## 📚 Learn More
 
-- [WASI Tutorial](https://github.com/fastnear/near-outlayer/blob/main/wasi-examples/WASI_TUTORIAL.md)
-- [OutLayer Documentation](https://github.com/fastnear/near-outlayer)
+- [WASI Tutorial](https://github.com/out-layer/outlayer/blob/main/wasi-examples/WASI_TUTORIAL.md)
+- [OutLayer Documentation](https://github.com/out-layer/outlayer)
 - [Random Number Example](https://github.com/out-layer/random-example)
 - [NEAR Smart Contracts](https://docs.near.org/develop/contracts/introduction)
 
