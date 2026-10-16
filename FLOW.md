@@ -366,7 +366,7 @@ const handleSubmitCaptcha = async () => {
 ## Production Checklist
 
 - [ ] Build WASM worker: `cargo build --target wasm32-wasip2 --release`
-- [ ] Push worker to GitHub (OutLayer will compile it)
+- [ ] Publish worker: `outlayer upload` the .wasm, then `outlayer deploy captcha-example <FastFS URL>`
 - [ ] Deploy contract with correct `launchpad_url`
 - [ ] Get hCaptcha keys from dashboard
 - [ ] Add domains to hCaptcha allowed list

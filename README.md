@@ -139,7 +139,7 @@ Single-page application with NEAR Wallet integration and hCaptcha.
 
 ### High-Level Setup
 
-1. **Build WASI Worker** - Compiles to WASM for off-chain CAPTCHA verification
+1. **Build & Publish WASI Worker** - WASM for off-chain CAPTCHA verification, deployed as an OutLayer project
 2. **Deploy Smart Contract** - Token sale logic on NEAR blockchain
 3. **Start Backend Server** - Handles CAPTCHA challenges and WebSocket
 4. **Build & Deploy Frontend** - User interface for token purchase
@@ -160,8 +160,10 @@ cargo build --target wasm32-wasip2 --release
 
 # Output: target/wasm32-wasip2/release/captcha-example.wasm (~459KB)
 
-# Push to GitHub (worker will be compiled by OutLayer)
-git push origin main
+# Publish it and deploy as a project
+outlayer upload target/wasm32-wasip2/release/captcha-example.wasm
+# prints SHA256 and: FastFS URL: https://test.fastfs.io/<you>/outlayer.testnet/<sha256>.wasm
+outlayer deploy captcha-example <FastFS URL>
 ```
 
 ### 2. Deploy Token Sale Contract
@@ -335,13 +337,14 @@ const TOKENS_PER_NEAR: u128 = 100;
 
 ### Worker Configuration
 
-Update `code_source.repo` in contract to point to your GitHub repo:
+Point `source` in the contract at your project:
 
 ```rust
-let code_source = near_sdk::serde_json::json!({
-    "repo": "https://github.com/YOUR_USERNAME/YOUR_REPO",
-    "commit": "main",
-    "build_target": "wasm32-wasip2"
+let source = near_sdk::serde_json::json!({
+    "Project": {
+        "project_id": "YOUR_ACCOUNT/captcha-example",
+        "version_key": null
+    }
 });
 ```
 

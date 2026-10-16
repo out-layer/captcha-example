@@ -18,6 +18,9 @@ const CALLBACK_GAS: u64 = 10_000_000_000_000; // 10 TGas
 /// For mainnet: "outlayer.near"
 const OUTLAYER_CONTRACT_ID: &str = "outlayer.testnet";
 
+/// The OutLayer project that runs the captcha worker (`outlayer deploy` publishes it).
+const OUTLAYER_PROJECT_ID: &str = "user.testnet/captcha-example";
+
 /// External contract interface for OutLayer
 #[ext_contract(ext_outlayer)]
 #[allow(dead_code)]
@@ -138,10 +141,9 @@ impl TokenSaleContract {
 
         // Hardcoded parameters for captcha-example
         let source = near_sdk::serde_json::json!({
-            "GitHub": {
-                "repo": "https://github.com/out-layer/captcha-example",
-                "commit": "main",
-                "build_target": "wasm32-wasip2"
+            "Project": {
+                "project_id": OUTLAYER_PROJECT_ID,
+                "version_key": null
             }
         });
 
